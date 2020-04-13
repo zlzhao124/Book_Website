@@ -11,7 +11,8 @@ Languages/Frameworks used (20 points)
 0 - MySQL Database
 0- PHP
 
-Functionality (53 points)
+*Functionality (53 points)*
+
 User Management (15 Points):
 1) user can register and login (5 points)
 2) Passwords are hashed, salted, and checked. (3 points) 
@@ -43,17 +44,17 @@ information above can also be viewed in mySQL database
 
 10) Users can log out(2 points)
 
-Best Practices (7 Points):
+*Best Practices (7 Points):*
 Code is well formatted and easy to read, with proper commenting (2 points)
 Safe from SQL Injection attacks (2 points)
 CSRF Tokens used when adding/editing/deleting book information (2 points)
 All HTML pages pass the W3C HTML and CSS validators (1 point)
 
-Usability/Style (5 Points):
+*Usability/Style (5 Points):*
 Site is intuitive to use and navigate (3 points)
 Site is visually appealing with proper interactive features(2 points)
 
-Creative Portion (10 points) 
+*Creative Portion (10 points)*
 Example (i don’t know if we’re gonna do specifically the examples below or not, but here are some that we came up with): 
 All users can comment on one book and other users can see their comment.(5 points)
 Users can rate (on a 0 to 5 scale) books of other users (5 points)

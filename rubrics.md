@@ -3,13 +3,13 @@ Zach Zhao and Helen Jiang
 Ebook management site:
 (similar to story sharing site in mod 3 but with additional features and more programming languages used)
 
-Submitted rubric (5 points)
+*Submitted rubric (5 points)*
 
-Languages/Frameworks used (20 points)
-10 - PHP laravel
+*Languages/Frameworks used (20 points)*
+(10 - PHP laravel
 10 - React
 0 - MySQL Database
-0- PHP
+0- PHP)
 
 *Functionality (53 points)*
 

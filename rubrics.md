@@ -1,4 +1,7 @@
-Zach Zhao and Helen Jiang
+Zach Zhao (466205) and Helen Jiang (464082)
+
+if this markdown file looks messy, here's a Google Doc link with our rubric in it:
+https://docs.google.com/document/d/1Lo4QbFTcCHM1D95XEk5js5D98nrcPDwOAGY3qUCw3pI/edit?usp=sharing
 
 Ebook management site:
 (similar to story sharing site in mod 3 but with additional features and more programming languages used)

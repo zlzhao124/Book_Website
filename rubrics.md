@@ -23,7 +23,7 @@ User Management (15 Points):
 
 Book Management (38 points):
 
-4) User can search and browse books from all over the internet, and being redirect to GOOGLE BOOK and read the book content when click on READMORE(10 points)
+4) By using GOOGLEBOOK API, User can search and browse books from all over the internet, and being redirect to GOOGLE BOOK and read the book content when click on READMORE(10 points)
 
 5) users can enter the book information that they've already owned and upload a picture. (9 points)
 book name (2pts)

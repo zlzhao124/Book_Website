@@ -19,13 +19,12 @@ Ebook management site:
 User Management (15 Points):
 1) user can register and login (5 points)
 2) Passwords are hashed, salted, and checked. (3 points) 
-3) Users can edit and delete his own book but not other user’s book.(5 points)
+3) Users can edit and delete his own book but not other user’s book.(7 points)
 
 Book Management (38 points):
 
-4) By using GOOGLEBOOK API, User can search and browse books from all over the internet, and being redirect to GOOGLE BOOK and read the book content when click on READMORE(10 points)
 
-5) users can enter the book information that they've already owned and upload a picture. (9 points)
+4) users can enter the book information that they've already owned and upload a picture. (9 points)
 book name (2pts)
 Author (2pts)
 public year (2pts)
@@ -34,7 +33,7 @@ upload picture (1pt)
 information above can also be viewed in mySQL database
 
 
-6) users can enter the book information that they would like to buy (book name, Author, public year, category). (8 points)
+5) users can enter the book information that they would like to buy (book name, Author, public year, category). (8 points)
 book name (2pts)
 Author (2pts)
 public year (2pts)
@@ -63,5 +62,5 @@ Site is visually appealing with proper interactive features(2 points)
 
 *Creative Portion (10 points)*
 Example (i don’t know if we’re gonna do specifically the examples below or not, but here are some that we came up with): 
-All users can comment on one book and other users can see their comment.(5 points)
-Users can rate (on a 0 to 5 scale) books of other users (5 points)
+By using GOOGLEBOOK API, User can search and browse books from all over the internet, and being redirect to GOOGLE BOOK and read the book content when click on READMORE(10 points)
+

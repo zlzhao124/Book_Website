@@ -19,10 +19,13 @@ Ebook management site:
 User Management (15 Points):
 1) user can register and login (5 points)
 2) Passwords are hashed, salted, and checked. (3 points) 
-3) Users can edit and delete his own book but not other user’s book.(7 points)
+3) Users can edit and delete his own book but not other user’s book.(5 points)
 
 Book Management (38 points):
-4) users can enter the book information that they've already owned and upload a picture. (9 points)
+
+4) User can search and browse books from all over the internet, and being redirect to GOOGLE BOOK and read the book content when click on READMORE(10 points)
+
+5) users can enter the book information that they've already owned and upload a picture. (9 points)
 book name (2pts)
 Author (2pts)
 public year (2pts)
@@ -30,7 +33,8 @@ category (2pts)
 upload picture (1pt)
 information above can also be viewed in mySQL database
 
-5) users can enter the book information that they would like to buy (book name, Author, public year, category). (8 points)
+
+6) users can enter the book information that they would like to buy (book name, Author, public year, category). (8 points)
 book name (2pts)
 Author (2pts)
 public year (2pts)

@@ -178,10 +178,12 @@
 	}
 
 	h3 {
+		color:black;
 		font-size: 1.35em;
 	}
 
 	h4 {
+
 		font-size: 1.1em;
 	}
 
@@ -278,14 +280,17 @@
 	}
 
 	a {
-		color: #e5474b;
+			color: black;
 	}
 
 	strong, b {
 		color: #e5474b;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
+	 h3, h4, h5, h6 {
+		color: black;
+	}
+	h1,h2{
 		color: #e5474b;
 	}
 
@@ -295,7 +300,7 @@
 
 	code {
 		background: none;
-		border-color: #e5474b;
+		border-color: black;
 	}
 
 	hr {
@@ -324,7 +329,7 @@
 		}
 
 	.box {
-		border-color: #e5474b;
+		border-color: black;
 	}
 
 /* Button */

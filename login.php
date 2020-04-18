@@ -19,7 +19,7 @@ if(password_verify($pwd_guess, $hashedPass)){
 	session_start();
 	$_SESSION['username'] = $username;
 	$_SESSION['token'] = bin2hex(openssl_random_pseudo_bytes(32));
-	header("Location: mainpage.php");
+	header("Location: index.php");
 	exit;
 } else{
 	 echo "login failed, passwords dont match!";

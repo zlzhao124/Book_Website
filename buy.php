@@ -1,13 +1,13 @@
 <?php
     require 'database.php';
     session_start();
-    $username = $_GET['username1'];
-    $title =  $_GET['title1'];
-    $author = $_GET['author1'];
-    $year = $_GET['year1'];
-    $category = $_GET['category1'];
+    $username = $_GET['username'];
+    $title =  $_GET['title'];
+    $author = $_GET['author'];
+    $year = $_GET['year'];
+    $category = $_GET['category'];
 
-    $user = $_SESSION['username1'];
+    $user = $_SESSION['username'];
 //    echo $user;
 
   //inserts stuff from textboxes on main page (all the story info) into our sql table for stories 
@@ -26,3 +26,4 @@ if ($username == $user){
 }
     header("Location: index.php");
     ?>
+

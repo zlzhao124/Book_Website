@@ -24,5 +24,9 @@ if ($username == $user){
 
     $stmt->close();
 }
+else{
+        echo "usernames don't match!";
+}
+
     header("Location: index.php");
     ?>

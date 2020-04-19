@@ -195,21 +195,7 @@
 		font-size: 0.7em;
 	}
 
-	@media screen and (max-width: 736px) {
-
-		h1 {
-			font-size: 1.5em;
-		}
-
-		h2 {
-			font-size: 1.25em;
-		}
-
-		h3 {
-			font-size: 1.1em;
-		}
-
-	}
+	
 
 	sub {
 		font-size: 0.8em;

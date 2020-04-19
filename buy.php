@@ -26,4 +26,3 @@ if ($username == $user){
 }
     header("Location: index.php");
     ?>
-

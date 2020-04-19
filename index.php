@@ -75,6 +75,14 @@
 
 <hr>
 
+
+<form action = "viewprofiles.php" methods = "POST">
+<label> Here you can view profiles for all the users:</label>
+<input type= "submit" name = "view" value = "View_Profiles" />
+
+
+
+
 <h5>You can upload Books you own here:<h5>
 
 <form action = "uploadbook.php" methods = "GET">
@@ -106,6 +114,12 @@
                                 <option value = "Other">Other</option>
                         </select>
 <br>
+<label> ISBN </label>
+<input type="text" placeholder="isbn" name="isbn" id="isbn" />
+<br>
+<label> Abstract </label>
+<textarea rows="6" cols="100" placeholder="Please type abstract content here." name="abstract" id="abstract"></textarea>
+<br>
 <input type= "submit" name = "submit" value = "submit" />
 <br><br>
 <br><br>
@@ -116,7 +130,7 @@
                                         <article>
                                                 <div class="content">
                                                         <header>
-                                                                <h2>Books you owned</h2>
+                                                                <h2>List of Books you owned</h2>
                                                         </header>
                                                         <div class="image fit">
                                                                 <img src="images/pic01.jpg" alt="" />
@@ -141,20 +155,25 @@
  $stmt->execute();
 
  $stmt->bind_result($title, $author, $year, $category);
- echo "<br /><br />";
  while($stmt->fetch()){
-    printf("%s,<br />, %s,<br />, %s,<br />,%s, <br /><br /><br />",
+    printf("%s,<br />%s,<br /> %s,<br />%s, <br /><br /><br />",
     htmlspecialchars("Book title :".$title),
     htmlspecialchars("Author: ".$author),
     htmlspecialchars("Year ".$year),
     htmlspecialchars("Category ".$category));
 
-    echo "<a href=readmore.php>READ MORE</a> ";
+
+    echo "<a href=readmore.php?title=$title&buser=$username1&list=1>READ MORE</a> ";
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
         echo "<a href=edit.php?title=$title&buser=$username1&list=1>EDIT INFO</a> ";
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
         echo "<a href=delete.php?title=$title&buser=$username1&list=1>DELETE BOOK</a> ";
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
+    echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
+    echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
+    echo"<br>";
+     echo"<br>";
+
 
 }
 $stmt->close();

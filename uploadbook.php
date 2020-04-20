@@ -12,6 +12,10 @@
     $user = $_SESSION['username'];
 //    echo $user;
 
+if(!hash_equals($_SESSION['token'], $_GET['token'])){
+        die("Request forgery detected");
+}
+
   //inserts stuff from textboxes on main page (all the story info) into our sql table for stories 
 if ($username == $user){
     $stmt = $mysqli->prepare("insert into book(username, title, author,year, category,isbn,abstract) values (?,?, ?, ?, ?, ?, ?)");

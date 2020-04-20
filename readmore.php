@@ -15,7 +15,7 @@
 
 echo "More info on ".$title." by ".$author;
 echo "<br><br>";
-
+//takes isbn and abstract from a specific book in the database and displays it
  $stmt = $mysqli->prepare("select isbn, abstract from book where username = ? AND title = ? AND author = ?");
  if(!$stmt)
  {

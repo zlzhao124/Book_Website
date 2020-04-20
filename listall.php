@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-<html>
+<html>  
         <head>
                 <title>E-library Website</title>
                 <meta charset="utf-8" />
@@ -25,7 +25,7 @@
 <input type="radio" name="cat" value="Science Fiction" id = "id6" required> Science Fiction
 <input type="radio" name="cat" value="Childrens" id = "id7" required> Childrens
 <input type="radio" name="cat" value="Realistic/Historical Fiction" id = "id8" required> Realistic/Historical Fiction
-<input type="radio" name="cat" value="Adventure" id = "id9" required> Adventure
+<input type="radio" name="cat" value="Action/Thriller" id = "id9" required> Action/Thriller
 <input type="radio" name="cat" value="Romance" id = "id10" required> Romance
 <input type="radio" name="cat" value="Other" id = "id11" required> Other
 <input type="radio" name="cat" value="All Books" id = "id12" required> All Books<br>
@@ -36,13 +36,17 @@
 <form action = "index.php" methods = "POST">
 <input type= "submit" name = "view" value = "Go Back" />
 </form>
-
+<?php session_start(); ?>
 <div id = "listbook">
 <h1> List of All Books </h1>
+<input type="hidden" id = "csrf_token" name="token" value="<?php echo $_SESSION['token'];?>" />
 <div id = "list"> </div>
 
 </div>
+
 <script>
+//same as listall2.php but with additional buttons for users to add these books to their two lists. This is also why we put a token in this one.
+const tok = document.getElementById("csrf_token").value;
 function getBooks() {
 
                 document.getElementById("list").remove();
@@ -132,7 +136,7 @@ function getBooks() {
                                                 bookdiv.appendChild(authtext);
 
                                                 var usertext = document.createElement("div");
-                                                usertext.textContent = "Username: " + jsonData.books[i].username;
+                                                usertext.textContent = "Owned By User: " + jsonData.books[i].username;
                                                 usertext.setAttribute("id", primarykeystring + "3");
                                                 bookdiv.appendChild(usertext);
 
@@ -159,12 +163,12 @@ function getBooks() {
                                                 abstext.style.visibility = "hidden";
                                               //  bookdiv.appendChild(document.createTextNode("Author: " + jsonData.books[i].author + " "));
                                               //  bookdiv.appendChild(document.createTextNode("Username: " + jsonData.books[i].username + " "));
-                                                bookdiv.appendChild(document.createTextNode("Category: " + jsonData.books[i].category+ " "));
-                                                bookdiv.appendChild(document.createTextNode("Year: " + jsonData.books[i].year + " "));
+                                            //    bookdiv.appendChild(document.createTextNode("Category: " + jsonData.books[i].category+ " "));
+                                              //  bookdiv.appendChild(document.createTextNode("Year: " + jsonData.books[i].year + " "));
                                                 bookdiv.setAttribute("class", "books");
                                                 bookdiv.setAttribute("id", jsonData.books[i].username + "---" + jsonData.books[i].title);
                                                 //creates an add-to-owned-list button right below the book text with ID containing the book information
-                                                var add = document.createElement("button");
+                                                const add = document.createElement("button");
                                                 add.textContent = "Add to own list";
                                                 add.setAttribute("class", "addbuttons");
                                                // var primarykeystring = jsonData.books[i].username + " " + jsonData.books[i].title;
@@ -172,35 +176,36 @@ function getBooks() {
                                                 bookdiv.appendChild(add);
                                                 button_IDs[i] = primarykeystring;
 
-                                                var add2 = document.createElement("button");
+                                                const add2 = document.createElement("button");
                                                 add2.textContent = "Add to wishlist";
                                                 add2.setAttribute("class", "addbuttons");
                                                 add2.setAttribute("id", "-" + primarykeystring);
                                                 bookdiv.appendChild(add2);
                                                 abutton_IDs[i] = "-" + primarykeystring;        
-
+                                //              bookdiv.appendChild(document.createTextNode("--------------------------------------------"));
                                                 document.getElementById("list").appendChild(bookdiv);
 
 
                                         }
                                 }
-                                                
+                                //adds event listeners to all the buttons with the correct information of each book attached to each one, similar to how we did events in calendar              
                                                                 if (button_IDs.length > 0) {
-
+                                
                                         for (j = 0; j < button_IDs.length; j++) {
-                                              var primkeystring = button_IDs[j];
+                                              const primkeystring = button_IDs[j];
                                               console.log(button_IDs[j]);                                          
                                                 document.getElementById(button_IDs[j]).addEventListener("click", function () {
                                                         console.log(primkeystring);
                                                 var title = document.getElementById(primkeystring + "1").textContent;
                                                 var author = (document.getElementById(primkeystring + "2").textContent).substring(3);
-                                                var user = (document.getElementById(primkeystring + "3").textContent).substring(10);
+                                                var user = (document.getElementById(primkeystring + "3").textContent).substring(15);
+                                                console.log(user);
                                                 var yr = (document.getElementById(primkeystring + "4").textContent).substring(6);
                                                 var cat = (document.getElementById(primkeystring + "5").textContent).substring(10);
                                                 var isbn = document.getElementById(primkeystring + "6").textContent;
                                                 var abs = document.getElementById(primkeystring + "7").textContent;
                                                 var list = 1;
-                                                var dataString2 = "title=" + encodeURIComponent(title) + "&author=" + encodeURIComponent(author) + "&user=" + encodeURIComponent(user) + "&year=" + encodeURIComponent(yr) + "&category=" + encodeURIComponent(cat) + "&isbn=" + encodeURIComponent(isbn) + "&abstract=" + encodeURIComponent(abs) +  "&list=" + encodeURIComponent(list);
+                                                var dataString2 = "title=" + encodeURIComponent(title) + "&author=" + encodeURIComponent(author) + "&user=" + encodeURIComponent(user) + "&year=" + encodeURIComponent(yr) + "&category=" + encodeURIComponent(cat) + "&isbn=" + encodeURIComponent(isbn) + "&abstract=" + encodeURIComponent(abs) + "&token=" + encodeURIComponent(tok)  +  "&list=" + encodeURIComponent(list);
                                                 console.log(dataString2);
                                                 var xmlHttp = new XMLHttpRequest();
                                                 xmlHttp.open("POST", "addfrombig.php", true);
@@ -229,13 +234,13 @@ function getBooks() {
                                                         console.log(primkeystring);
                                                 var title = document.getElementById(primkeystring + "1").textContent;
                                                 var author = (document.getElementById(primkeystring + "2").textContent).substring(3);
-                                                var user = (document.getElementById(primkeystring + "3").textContent).substring(10);
+                                                var user = (document.getElementById(primkeystring + "3").textContent).substring(15);
                                                 var yr = (document.getElementById(primkeystring + "4").textContent).substring(6);
                                                 var cat = (document.getElementById(primkeystring + "5").textContent).substring(10);
                                                 var isbn = document.getElementById(primkeystring + "6").textContent;
                                                 var abs = document.getElementById(primkeystring + "7").textContent;
                                                 var list = 2;
-                                                var dataString2 = "title=" + encodeURIComponent(title) + "&author=" + encodeURIComponent(author) + "&user=" + encodeURIComponent(user) + "&year=" + encodeURIComponent(yr) + "&category=" + encodeURIComponent(cat) + "&isbn=" + encodeURIComponent(isbn) + "&abstract=" + encodeURIComponent(abs) + "&list=" + encodeURIComponent(list);
+                                                var dataString2 = "title=" + encodeURIComponent(title) + "&author=" + encodeURIComponent(author) + "&user=" + encodeURIComponent(user) + "&year=" + encodeURIComponent(yr) + "&category=" + encodeURIComponent(cat) + "&isbn=" + encodeURIComponent(isbn) + "&abstract=" + encodeURIComponent(abs) + "&token=" + encodeURIComponent(tok) + "&list=" + encodeURIComponent(list);
                                                 console.log(dataString2);
                                                 var xmlHttp = new XMLHttpRequest();
                                                 xmlHttp.open("POST", "addfrombig.php", true);
@@ -254,14 +259,12 @@ function getBooks() {
                                               }, false);
                                         }
                                 }
-
-
-
                         }
                 }, false);
                 xmlHttp.send(dataString);
        document.getElementById("listbook").appendChild(redo_list); 
 }
+
 document.addEventListener("DOMContentLoaded", getBooks, false);
 
 document.getElementById("id1").addEventListener("click", getBooks, false);

@@ -53,7 +53,7 @@ information above can also be viewed in mySQL database
 Best Practices (7 Points):
 Code is well formatted and easy to read, with proper commenting (2 points)
 Safe from SQL Injection attacks (2 points)
-CSRF Tokens used when adding/editing/deleting book information (2 points)
+CSRF Tokens used when modifying book information (2 points)
 All HTML pages pass the W3C HTML and CSS validators (1 point)
 
 Usability/Style (5 Points):
@@ -61,8 +61,4 @@ Site is intuitive to use and navigate (3 points)
 Site is visually appealing with proper interactive features(2 points)
 
 Creative Portion (15 points) 
-Example (i don’t know if we’re gonna do specifically the examples below or not, but here are some that we came up with): 
-All users can comment on one book and other users can see their comment.(5 points)
-Users can display books by genre (similar to the tags on the Calendar project) (5 points)
-Users can see each other’s profiles with a list of books they own (5 points)
 

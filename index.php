@@ -6,13 +6,12 @@
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
                 <link rel="stylesheet" href="css/main.css" />
-
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                 <script type='text/javascript' src='config.js'></script>
                 <script type="text/javascript" src="script.js"></script>
 
-                
+
         </head>
         <body>
 
@@ -24,8 +23,7 @@
                         <!--                    <a href="index.php" id = "home">Home</a> -->
                                                 <a href="logout.php" id = "userlogout">Logout</a>
                                                 <a href="listall.php" id = "listall">List of All Books</a>
-                                <!--            <a href="login.html" id = "userlogin">User Login</a>
-                                                <a href="registerbook.html" id = "userregister">User Register</a> -->
+                                                <a href="viewprofiles.php" id = "viewusers">View Profiles</a>
                                         </nav>
                                 </div>
                         </header>
@@ -35,12 +33,8 @@
                                 <div class="inner">
                                         <h1>Welcome to E-Library: <span>Here you can browse books, list your books and find other readers!<br />
                                 </span></h1>
-                        <!--            <ul class="actions">
-                                                <li><a href="#" class="button alt">Get Started</a></li>
-                                        </ul>-->
                                 </div>
                         </section>
-                        
 
             <?php
  require 'database.php';
@@ -50,18 +44,17 @@
  echo "<h2> Let's begin your reading journey!</h2><br/>";
  echo "<br /><br />";
 
-//below are various forms for the other options you can do on the main page, such as uploading a story, viewing your own comments, and viewing profiles.
+//below are various forms for the other options you can do on the main page, such as viewing your lists, uploading books to your lists, and searching for books on googlebooks 
  ?>
- <h2> Search Book and Read Book </h2>
+<h2> Search For Books </h2>
                          <div class="container">
                                         <div id="searchBox">
                                                 <form id="form" class="form-inline">
                                                         <input type="text" id="searchText">
                                                         <input type="submit" value="Search">
                                                         <select id="type">
-                                                                <option value="-">-</option>
-                                                                <option value="Author">Author</option>
                                                                 <option value="Title">Title</option>
+                                                                <option value="Author">Author</option>
                                                         </select>
                                                         <select id="order">
                                                                 <option value="Relevance">Relevance</option>
@@ -69,19 +62,14 @@
                                                         </select>
                                                 </form>
                                         </div>
-                                        
+
                                         <h3> Search Results</h3>
                                 <div id="resulttext"></div>
                                 <div id="result"></div>
 
 
-<form action = "viewprofiles.php" methods = "POST">
-<label> Here you can view profiles for all the users:</label>
-<input type= "submit" name = "view" value = "View_Profiles" />
-
-
-
-
+<hr>
+<!-- upload books to your lists, below each form is a list of the current books in both lists -->
 <h5>You can upload Books you own here:<h5>
 
 <form action = "uploadbook.php" methods = "GET">
@@ -106,7 +94,7 @@
                                 <option value = "Mystery">Mystery</option>
                                 <option value = "Fantasy">Fantasy</option>
                                 <option value = "Science Fiction">Science Fiction</option>
-                                <option value = "Children’s">Children’s</option>
+                                <option value = "Childrens">Childrens</option>
                                 <option value = "Realistic/Historical Fiction">Realistic/Historical Fiction</option>
                                 <option value = "Action/Thriller">Action/Thriller</option>
                                 <option value = "Romance">Romance</option>
@@ -119,6 +107,7 @@
 <label> Abstract </label>
 <textarea rows="6" cols="100" placeholder="Please type abstract content here." name="abstract" id="abstract"></textarea>
 <br>
+<input type="hidden" name="token" id = "token" value="<?php echo $_SESSION['token'];?>" />
 <input type= "submit" name = "submit" value = "submit" />
 <br><br>
 <br><br>
@@ -129,7 +118,7 @@
                                         <article>
                                                 <div class="content">
                                                         <header>
-                                                                <h2>List of Books you owned</h2>
+                                                                <h2>List of Books You Own</h2>
                                                         </header>
                                                         <div class="image fit">
                                                                 <img src="images/pic01.jpg" alt="" />
@@ -141,7 +130,7 @@
                     
 <?php
  require 'database.php';
-// session_start();
+// fetching all books owned by the current logged in user, along with hrefs to look at more info, edit, and delete options
  $username1 = $_SESSION['username'];
  $stmt = $mysqli->prepare("select title, author,year, category from book where username = ?");
  if(!$stmt)
@@ -154,25 +143,27 @@
  $stmt->execute();
 
  $stmt->bind_result($title, $author, $year, $category);
+ echo "<br /><br />";
  while($stmt->fetch()){
+
     printf("%s,<br />%s,<br /> %s,<br />%s, <br /><br /><br />",
     htmlspecialchars("Book title :".$title),
     htmlspecialchars("Author: ".$author),
     htmlspecialchars("Year ".$year),
     htmlspecialchars("Category ".$category));
-
-
-    echo "<a href=readmore.php?title=$title&buser=$username1&list=1>READ MORE</a> ";
+    $title1 = str_replace(' ', '%20', $title);
+    $author1 = str_replace(' ', '%20', $author);
+    echo "<a href=readmore.php?title=$title1&buser=$username1&bauthor=$author1&list=1>MORE INFO</a> ";
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
-        echo "<a href=edit.php?title=$title&buser=$username1&list=1>EDIT INFO</a> ";
+        echo "<a href=edit.php?title=$title1&buser=$username1&bauthor=$author1&list=1>EDIT INFO</a> ";
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
-        echo "<a href=delete.php?title=$title&buser=$username1&list=1>DELETE BOOK</a> ";
+        echo "<a href=delete.php?title=$title1&buser=$username1&bauthor=$author1&list=1>DELETE BOOK</a> ";
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
     echo"<br>";
+    echo"-----------------";
      echo"<br>";
-
 
 }
 $stmt->close();
@@ -204,7 +195,7 @@ $stmt->close();
                                 <option value = "Mystery">Mystery</option>
                                 <option value = "Fantasy">Fantasy</option>
                                 <option value = "Science Fiction">Science Fiction</option>
-                                <option value = "Children’s">Children’s</option>
+                                <option value = "Childrens">Childrens</option>
                                 <option value = "Realistic/Historical Fiction">Realistic/Historical Fiction</option>
                                 <option value = "Action/Thriller">Action/Thriller</option>
                                 <option value = "Romance">Romance</option>
@@ -212,9 +203,11 @@ $stmt->close();
                         </select>
 
 <br>
+<input type="hidden" name="token" id = "token"  value="<?php echo $_SESSION['token'];?>" />
 <input type= "submit" name = "submit" value = "submit" />
 <br><br>
 <br><br>
+
                 <!-- Three -->
                         <section id="three">
                                 <div class="inner">
@@ -254,16 +247,22 @@ $stmt->close();
     htmlspecialchars("Author: ".$author),
     htmlspecialchars("Year ".$year),
     htmlspecialchars("Category ".$category));
+$title1 = str_replace(' ', '%20', $title);
+ $author1 = str_replace(' ', '%20', $author);
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
   //      echo "<a href=edit.php>EDIT INFO</a> ";
   //  echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
-        echo "<a href=delete.php?title=$title&buser=$username1&list=2>DELETE BOOK</a> ";
+        echo "<a href=delete.php?title=$title1&buser=$username1&bauthor=$author1&list=2>DELETE BOOK</a> ";
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
-
+  echo"<br>";
+  echo"-----------------";
+  echo"<br>";
 }
 $stmt->close();
 
 ?>
-                                                                                     
+
+
         </body>
 </html>
+

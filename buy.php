@@ -1,6 +1,8 @@
 <?php
     require 'database.php';
     session_start();
+
+//all the information we need to add a book to our buy list
     $username = $_GET['username'];
     $title =  $_GET['title'];
     $author = $_GET['author'];
@@ -10,7 +12,7 @@
     $user = $_SESSION['username'];
 //    echo $user;
 
-  //inserts stuff from textboxes on main page (all the story info) into our sql table for stories 
+  //inserts stuff from textboxes on main page (all the book info) into our buy list sql table for stories 
 if ($username == $user){
     $stmt = $mysqli->prepare("insert into buy(username, title, author,year, category) values (?,?, ?, ?, ?)");
     if(!$stmt){
@@ -26,3 +28,4 @@ if ($username == $user){
 }
     header("Location: index.php");
     ?>
+

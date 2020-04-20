@@ -3,7 +3,7 @@ $( document ).ready(function() {
     
 	//Variables
 	var _searchText; //variable to store the text the user inserted in the text box
-	var _apiKey = ':keyes&key=' + config.MY_KEY; //variable containing the last parameter of the GET request and the API key
+	var _apiKey = '&key=' + config.MY_KEY; //variable containing the last parameter of the GET request and the API key
 	var _apiURL = "https://www.googleapis.com/books/v1/volumes?q="; //variable containing the URL for the GET request
 	var _searchType=""; //variable to define the type of search: author name or title
 	var _orderType =""; //Variable that controls the results order - Relevance or Publish Date
@@ -18,9 +18,6 @@ $( "#form" ).submit(function( event ) {
 			_searchType = "+inauthor";
 			break;
 		case "Title":
-			_searchType = "+intitle";
-			break;
-		case "-":
 			_searchType ="";
 			break;
 		default:

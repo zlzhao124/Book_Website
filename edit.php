@@ -16,7 +16,6 @@ $b_author = $_GET['bauthor'];
 $title =  $_GET['title'];
 $list = $_GET['list'];
 
-
 echo "Currently Editing ".$title;
 
 //link to editstory2.php with same get query values
@@ -59,7 +58,7 @@ if ($b_username!=$current_user){
                                 <option value = "Romance">Romance</option>
                                 <option value = "Other">Other</option>
                         </select>
-                <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>" />
+                <input type="hidden" name="token" id = "token"  value="<?php echo $_SESSION['token'];?>" />
         </p>
         <p>
                 <input type="submit" value="Update" />

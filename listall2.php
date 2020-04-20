@@ -12,7 +12,7 @@
 
         </head>
 <body>
-
+<!-- sorting options here -->
 <div id = "displayoptions">
         <br> <br> <br>
         Display Book by Category:
@@ -25,7 +25,7 @@
 <input type="radio" name="cat" value="Science Fiction" id = "id6" required> Science Fiction
 <input type="radio" name="cat" value="Childrens" id = "id7" required> Childrens
 <input type="radio" name="cat" value="Realistic/Historical Fiction" id = "id8" required> Realistic/Historical Fiction
-<input type="radio" name="cat" value="Adventure" id = "id9" required> Adventure
+<input type="radio" name="cat" value="Action/Thriller" id = "id9" required> Action/Thriller
 <input type="radio" name="cat" value="Romance" id = "id10" required> Romance
 <input type="radio" name="cat" value="Other" id = "id11" required> Other
 <input type="radio" name="cat" value="All Books" id = "id12" required> All Books<br>
@@ -47,7 +47,7 @@
 function getBooks() {
 
                 document.getElementById("list").remove();
-
+		//checks each button to see which one is checked off so that javascript can make ajax calls and get the correct set of books
                 var redo_list = document.createElement("div");
                 redo_list.setAttribute("id", "list");
                 var v1 =  document.getElementById('id1');
@@ -111,15 +111,10 @@ function getBooks() {
                                 alert("failed to fetch events");
                         }
                         else {
-                                  var button_IDs = []; //array of add to list buttons
-                                var abutton_IDs = [];//array of add to buy buttons
-                        //      var sbutton_IDs = []; //array of share buttons
+                                 
                                 if (jsonData.exists) {
                                         for (i = 0; i < jsonData.books.length; i++) {
-                                                //creates the event text node with title, time and category
-                                                button_IDs[i] = i;
-                                                abutton_IDs[i] = i;
-                                //                                                              sbutton_IDs[i] = i;
+                                                //creates text properties for all the main properties of a book
                                                 var primarykeystring = jsonData.books[i].username + "---" + jsonData.books[i].title + "---" + jsonData.books[i].author;
                                                 var bookdiv = document.createElement("div");
                                                 var titletext = document.createElement("div");
@@ -149,8 +144,8 @@ function getBooks() {
 
                                               //  bookdiv.appendChild(document.createTextNode("Author: " + jsonData.books[i].author + " "));
                                               //  bookdiv.appendChild(document.createTextNode("Username: " + jsonData.books[i].username + " "));
-                                                bookdiv.appendChild(document.createTextNode("Category: " + jsonData.books[i].category+ " "));
-                                                bookdiv.appendChild(document.createTextNode("Year: " + jsonData.books[i].year + " "));
+                                             //   bookdiv.appendChild(document.createTextNode("Category: " + jsonData.books[i].category+ " "));
+                                                bookdiv.appendChild(document.createTextNode("---------------------------------------------------- "));
                                                 bookdiv.setAttribute("class", "books");
                                                 bookdiv.setAttribute("id", jsonData.books[i].username + "---" + jsonData.books[i].title);
                                                 
@@ -162,7 +157,7 @@ function getBooks() {
                 xmlHttp.send(dataString);
        document.getElementById("listbook").appendChild(redo_list); 
 }
-
+//adds event listeners for whenever the page is refreshed and whever a radio button is clicked
 document.addEventListener("DOMContentLoaded", getBooks, false);
 
 document.getElementById("id1").addEventListener("click", getBooks, false);

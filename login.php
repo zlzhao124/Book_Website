@@ -2,7 +2,7 @@
 require 'database.php';
 $user_guess = $_POST['username'];
 $pwd_guess = $_POST['password'];
-
+//pretty much the same as previous modules 
 $stmt = $mysqli->prepare("select COUNT(*), username, password from users where username=?");
 
 if(!$stmt){

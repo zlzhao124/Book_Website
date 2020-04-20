@@ -4,12 +4,10 @@
   header("Content-Type: application/json");
   // session cookie http only
   ini_set("session.cookie_httponly", 1);
- // session_start();
- // $username = $_SESSION['username'];
 
   $category = $_POST['category'];
 
-//if the all category was selected, then it will disregard category and display all events, otherwise it will only display events in 1 category
+//if the all category was selected, then it will disregard category and display all books owned by everyone, otherwise it will only display books in 1 category
 if ($category == "All Books"){
   $stmt = $mysqli->prepare("select * from book");
   if(!$stmt){
@@ -39,7 +37,7 @@ else{
   $result = $stmt->get_result();
   if ($result->num_rows > 0) {
     $books = array();
-  // Make an array of all the resulting events that will be included in the jsonData that is passed back
+  // Make an array of all the resulting books that will be included in the jsonData that is passed back
   while($row = $result->fetch_assoc()){
      array_push($books, array(
        "title" => htmlentities($row['title']),
@@ -67,3 +65,4 @@ else{
   $stmt->close();
 
 ?>
+

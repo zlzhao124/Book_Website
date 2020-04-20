@@ -14,7 +14,7 @@
 
   //inserts stuff from textboxes on main page (all the story info) into our sql table for stories 
 if ($username == $user){
-    $stmt = $mysqli->prepare("insert into book(username, title, author,year, category,isbn,abstract) values (?,?, ?, ?, ?,?,?)");
+    $stmt = $mysqli->prepare("insert into book(username, title, author,year, category,isbn,abstract) values (?,?, ?, ?, ?, ?, ?)");
     if(!$stmt){
         printf("Query Prep Failed: %s\n", $mysqli->error);
         exit;

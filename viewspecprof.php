@@ -5,13 +5,16 @@
 
 <link rel="stylesheet" href="css/main.css" />
 
-<h1> HIIII </h1>
-<body>
+<h1> View Specific User Profile </h1>
+
 <?php
  require 'database.php';
  session_start();
  $user = $_SESSION['username'];
  $viewinguser = $_GET['user'];
+
+echo "Currently Viewing User ".$viewinguser;
+echo "<br>";
 //first displays all the book user //OWN 
  $stmt = $mysqli->prepare("select title, author, year,category from book where username = ?");
 
@@ -37,9 +40,9 @@ echo "<br /><br />";
     echo "Year: ".$year;
     echo "<br />";
     echo "category: ".$category;
-    
-    echo "<a href=readmore.php?user=$viewinguser>READ MORE</a>";
-   
+
+   // echo "<a href=readmore.php?user=$viewinguser>READ MORE</a>";
+
 }
 $stmt->close();
 
@@ -47,8 +50,6 @@ $stmt->close();
 
 //next displays all the book user //want to buy
  $stmt2 = $mysqli->prepare("select title, author, year,category from buy where username = ?");
-
-
  if(!$stmt2)
  {
      printf("Query Prep Failed: %s\n", $mysqli->error);
@@ -56,14 +57,14 @@ $stmt->close();
  }
  $stmt2->bind_param('s',$viewinguser);
  $stmt2->execute();
- $stmt->bind_result( $title, $author, $year, $category) ;
+ $stmt2->bind_result( $title, $author, $year, $category) ;
 
 
 echo "<br /><br />";
 echo "<br /><br />";
 echo("List of book user want to buy <br />");
 echo "<br /><br />";
-while($stmt->fetch()){
+while($stmt2->fetch()){
     echo "<br />";
     echo " Title: ".$title;
     echo "<br />";
@@ -73,8 +74,18 @@ while($stmt->fetch()){
     echo "<br />";
     echo "category: ".$category;
 
-    echo "<a href=readmore.php?user=$viewinguser>READ MORE</a>";
+   // echo "<a href=readmore.php?user=$viewinguser>READ MORE</a>";
+}
+
 $stmt2->close();
 
 
 ?>
+
+<form action = "viewprofiles.php" methods = "POST">
+<input type= "submit" name = "view" value = "Go Back" />
+</form>
+
+</body>
+</html>
+

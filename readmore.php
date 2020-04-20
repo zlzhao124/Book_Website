@@ -9,16 +9,20 @@
  require 'database.php';
  session_start();
 // session_start();
-echo"hi";
  $username1 = $_SESSION['username'];
  $title =  $_GET['title'];
- $stmt = $mysqli->prepare("select isbn, abstract from book where  username = ?");
+ $author = $_GET['bauthor'];
+
+echo "More info on ".$title." by ".$author;
+echo "<br><br>";
+
+ $stmt = $mysqli->prepare("select isbn, abstract from book where username = ? AND title = ? AND author = ?");
  if(!$stmt)
  {
      printf("Query Prep Failed: %s\n", $mysqli->error);
      exit;
  }
- $stmt->bind_param('s', $username1);
+ $stmt->bind_param('sss', $username1, $title, $author);
  $stmt->execute();
  $stmt->bind_result($isbn, $abstract);
  echo "<br /><br />";
@@ -33,8 +37,12 @@ $stmt->close();
 
 
 ?>
+
+<form action = "index.php" methods = "POST">
+<input type= "submit" name = "view" value = "Go Back" />
+</form>
+
 </body>
 </html>
-
 
 

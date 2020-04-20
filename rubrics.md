@@ -44,7 +44,7 @@ information above can also be viewed in mySQL database
 
 8) A more detailed information such as book abstract and ISBN # will be displayed while clicking on the book title.(3 points)
 
-9 ) Users can sort both lists based on category(3 points)
+9 ) Users can sort the book list based on category(3 points)
 
 10) Users can delete book name and its description.(4 points) 
 

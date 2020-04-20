@@ -22,7 +22,7 @@ echo "<br /><br />";
 
 echo "<br /><br />";
  while($stmt->fetch()){
- 
+
     echo $username;
     echo "<a href=viewspecprof.php?user=$username>View this user</a>";
     echo "<br /><br />";
@@ -34,7 +34,7 @@ $stmt->close();
 
 ?>
 
-<form action = "mainpage.php" methods = "POST">
+<form action = "index.php" methods = "POST">
 <input type= "submit" name = "view" value = "Go Back" />
 </form>
 

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head><title>Edit Link or Title</title></head>
+<link rel="stylesheet" href="css/main.css" />
+
 <body>
 
 <?php
@@ -10,12 +12,15 @@ require 'database.php';
 session_start();
 $current_user = $_SESSION['username'];
 $b_username = $_GET['buser'];
+$b_author = $_GET['bauthor'];
 $title =  $_GET['title'];
 $list = $_GET['list'];
+
+
 echo "Currently Editing ".$title;
 
 //link to editstory2.php with same get query values
-$linkstring =  "edit2.php?buser=".$b_username."&title=".$title."&list=".$list;
+$linkstring =  "edit2.php?buser=".$b_username."&title=".$title."&bauthor=".$b_author."&list=".$list;
 
 //if usernames differ, we redirect back to mainpage because you cannot edit a different user's story
 if ($b_username!=$current_user){

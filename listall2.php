@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-<html>
+<html>  
         <head>
                 <title>E-library Website</title>
                 <meta charset="utf-8" />
@@ -33,7 +33,7 @@
 
 
 
-<form action = "index.php" methods = "POST">
+<form action = "index.html" methods = "POST">
 <input type= "submit" name = "view" value = "Go Back" />
 </form>
 
@@ -42,6 +42,7 @@
 <div id = "list"> </div>
 
 </div>
+
 <script>
 function getBooks() {
 
@@ -146,122 +147,22 @@ function getBooks() {
                                                 categoryt.setAttribute("id", primarykeystring + "5");
                                                 bookdiv.appendChild(categoryt);
 
-                                                //creates dummy variables for the isbn and the abstract, will save these for the buttons
-                                                var isbntext = document.createElement("div");
-                                                isbntext.textContent = jsonData.books[i].isbn;
-                                                isbntext.setAttribute("id", primarykeystring + "6");
-                                                bookdiv.appendChild(isbntext);
-                                                var abstext = document.createElement("div");
-                                                abstext.textContent = jsonData.books[i].abs;
-                                                abstext.setAttribute("id", primarykeystring + "7");
-                                                bookdiv.appendChild(abstext);
-                                                isbntext.style.visibility = "hidden";
-                                                abstext.style.visibility = "hidden";
                                               //  bookdiv.appendChild(document.createTextNode("Author: " + jsonData.books[i].author + " "));
                                               //  bookdiv.appendChild(document.createTextNode("Username: " + jsonData.books[i].username + " "));
                                                 bookdiv.appendChild(document.createTextNode("Category: " + jsonData.books[i].category+ " "));
                                                 bookdiv.appendChild(document.createTextNode("Year: " + jsonData.books[i].year + " "));
                                                 bookdiv.setAttribute("class", "books");
                                                 bookdiv.setAttribute("id", jsonData.books[i].username + "---" + jsonData.books[i].title);
-                                                //creates an add-to-owned-list button right below the book text with ID containing the book information
-                                                var add = document.createElement("button");
-                                                add.textContent = "Add to own list";
-                                                add.setAttribute("class", "addbuttons");
-                                               // var primarykeystring = jsonData.books[i].username + " " + jsonData.books[i].title;
-                                                add.setAttribute("id", primarykeystring);
-                                                bookdiv.appendChild(add);
-                                                button_IDs[i] = primarykeystring;
-
-                                                var add2 = document.createElement("button");
-                                                add2.textContent = "Add to wishlist";
-                                                add2.setAttribute("class", "addbuttons");
-                                                add2.setAttribute("id", "-" + primarykeystring);
-                                                bookdiv.appendChild(add2);
-                                                abutton_IDs[i] = "-" + primarykeystring;        
-
-                                                document.getElementById("list").appendChild(bookdiv);
-
-
-                                        }
-                                }
                                                 
-                                                                if (button_IDs.length > 0) {
-
-                                        for (j = 0; j < button_IDs.length; j++) {
-                                              var primkeystring = button_IDs[j];
-                                              console.log(button_IDs[j]);                                          
-                                                document.getElementById(button_IDs[j]).addEventListener("click", function () {
-                                                        console.log(primkeystring);
-                                                var title = document.getElementById(primkeystring + "1").textContent;
-                                                var author = (document.getElementById(primkeystring + "2").textContent).substring(3);
-                                                var user = (document.getElementById(primkeystring + "3").textContent).substring(10);
-                                                var yr = (document.getElementById(primkeystring + "4").textContent).substring(6);
-                                                var cat = (document.getElementById(primkeystring + "5").textContent).substring(10);
-                                                var isbn = document.getElementById(primkeystring + "6").textContent;
-                                                var abs = document.getElementById(primkeystring + "7").textContent;
-                                                var list = 1;
-                                                var dataString2 = "title=" + encodeURIComponent(title) + "&author=" + encodeURIComponent(author) + "&user=" + encodeURIComponent(user) + "&year=" + encodeURIComponent(yr) + "&category=" + encodeURIComponent(cat) + "&isbn=" + encodeURIComponent(isbn) + "&abstract=" + encodeURIComponent(abs) +  "&list=" + encodeURIComponent(list);
-                                                console.log(dataString2);
-                                                var xmlHttp = new XMLHttpRequest();
-                                                xmlHttp.open("POST", "addfrombig.php", true);
-                                                xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
-                                                xmlHttp.addEventListener("load", function (event) {
-                                                  console.log("reached");
-                                                  var jsonData = JSON.parse(event.target.responseText);
-                                                  if (!jsonData.success) {
-                                                        alert(jsonData.message);
-                                                        }
-                                                  else{alert("book added")}
-                                              //          deleteEvent(idid);
-                                                }, false);
-                                                xmlHttp.send(dataString2);
-
-                                              }, false);
+                                                document.getElementById("list").appendChild(bookdiv);
                                         }
-                                }
-
-                                                                if (abutton_IDs.length > 0) {
-
-                                        for (j = 0; j < abutton_IDs.length; j++) {
-                                              var primkeystring = abutton_IDs[j].substring(1);
-                                              console.log(abutton_IDs[j]);                                          
-                                                document.getElementById(abutton_IDs[j]).addEventListener("click", function () {
-                                                        console.log(primkeystring);
-                                                var title = document.getElementById(primkeystring + "1").textContent;
-                                                var author = (document.getElementById(primkeystring + "2").textContent).substring(3);
-                                                var user = (document.getElementById(primkeystring + "3").textContent).substring(10);
-                                                var yr = (document.getElementById(primkeystring + "4").textContent).substring(6);
-                                                var cat = (document.getElementById(primkeystring + "5").textContent).substring(10);
-                                                var isbn = document.getElementById(primkeystring + "6").textContent;
-                                                var abs = document.getElementById(primkeystring + "7").textContent;
-                                                var list = 2;
-                                                var dataString2 = "title=" + encodeURIComponent(title) + "&author=" + encodeURIComponent(author) + "&user=" + encodeURIComponent(user) + "&year=" + encodeURIComponent(yr) + "&category=" + encodeURIComponent(cat) + "&isbn=" + encodeURIComponent(isbn) + "&abstract=" + encodeURIComponent(abs) + "&list=" + encodeURIComponent(list);
-                                                console.log(dataString2);
-                                                var xmlHttp = new XMLHttpRequest();
-                                                xmlHttp.open("POST", "addfrombig.php", true);
-                                                xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
-                                                xmlHttp.addEventListener("load", function (event) {
-                                                  console.log("reached");
-                                                  var jsonData = JSON.parse(event.target.responseText);
-                                                  if (!jsonData.success) {
-                                                        alert(jsonData.message);
-                                                        }
-                                                  else{alert("book added")}
-                                              //          deleteEvent(idid);
-                                                }, false);
-                                                xmlHttp.send(dataString2);
-
-                                              }, false);
-                                        }
-                                }
-
-
-
+                              }
                         }
                 }, false);
                 xmlHttp.send(dataString);
        document.getElementById("listbook").appendChild(redo_list); 
 }
+
 document.addEventListener("DOMContentLoaded", getBooks, false);
 
 document.getElementById("id1").addEventListener("click", getBooks, false);

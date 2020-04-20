@@ -6,13 +6,13 @@
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
                 <link rel="stylesheet" href="css/main.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script src="js2.js"></script>
 
-                <script>
-                        google.books.load();
-                  </script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                <script type='text/javascript' src='config.js'></script>
+                <script type="text/javascript" src="script.js"></script>
+
+                
         </head>
         <body>
 
@@ -40,6 +40,7 @@
                                         </ul>-->
                                 </div>
                         </section>
+                        
 
             <?php
  require 'database.php';
@@ -51,29 +52,27 @@
 
 //below are various forms for the other options you can do on the main page, such as uploading a story, viewing your own comments, and viewing profiles.
  ?>
-                        <div id="search">
-                                <form id="myform">
-                                        <div class="input-field">
-                    <h3>Search Books</h3>
-                                                <input type="search" id="books">
-                    <button class="btn red">Search Books</button>
-
-                    <br /><br />
-
+ <h2> Search Book and Read Book </h2>
+                         <div class="container">
+                                        <div id="searchBox">
+                                                <form id="form" class="form-inline">
+                                                        <input type="text" id="searchText">
+                                                        <input type="submit" value="Search">
+                                                        <select id="type">
+                                                                <option value="-">-</option>
+                                                                <option value="Author">Author</option>
+                                                                <option value="Title">Title</option>
+                                                        </select>
+                                                        <select id="order">
+                                                                <option value="Relevance">Relevance</option>
+                                                                <option value="Publish Date">Publish Date</option>
+                                                        </select>
+                                                </form>
                                         </div>
-                </form>
-                        </div>
-
-
-                        <div id="result">
-
-
-                        </div>
-            <br>
-            <br>
-            <br>
-
-<hr>
+                                        
+                                        <h3> Search Results</h3>
+                                <div id="resulttext"></div>
+                                <div id="result"></div>
 
 
 <form action = "viewprofiles.php" methods = "POST">

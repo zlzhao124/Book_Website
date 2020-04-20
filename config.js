@@ -1,3 +1,3 @@
 var config = {
-    MY_KEY : 'AIzaSyA0Qw2XhngxnR4YmaetQzJtgoBa7z4RJsY',
+    MY_KEY : 'AIzaSyB1f0cBE4r1sRXvlEy6nf5PUMu66plYEgA',
   }

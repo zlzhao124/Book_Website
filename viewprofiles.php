@@ -19,11 +19,10 @@
  $stmt->execute();
  $stmt->bind_result( $username) ;
 
-echo "<br />";
  while($stmt->fetch()){
 //attaches an href that leads to a link for the specific profile with the user's 2 lists
     echo $username;
-    echo "<a href=viewspecprof.php?user=$username>View this user</a>";
+    echo "<a href=viewspecprof.php?user=$username><h4>View this user</h4></a>";
     echo "<br /><br />";
 
 }

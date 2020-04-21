@@ -13,7 +13,7 @@
  $user = $_SESSION['username'];
  $viewinguser = $_GET['user'];
 
-echo "Currently Viewing User ".$viewinguser;
+echo " Currently Viewing User ".$viewinguser;
 echo "<br>";
 //first displays all the book user //OWN 
  $stmt = $mysqli->prepare("select title, author, year,category from book where username = ?");
@@ -29,9 +29,9 @@ echo "<br>";
 
 
 
-echo("List of book user have owned <br />");
-echo "<br /><br />";
+echo("<h3>List of book user have owned </h3>");
  while($stmt->fetch()){
+    echo"_____________________________________________________________________________________________________________________________";
     echo "<br />";
     echo " Title: ".$title;
     echo "<br />";
@@ -40,6 +40,8 @@ echo "<br /><br />";
     echo "Year: ".$year;
     echo "<br />";
     echo "category: ".$category;
+    echo "<br />";
+echo"__________________________________________________________________________________________________________________________________________________";
 
    // echo "<a href=readmore.php?user=$viewinguser>READ MORE</a>";
 
@@ -59,12 +61,10 @@ $stmt->close();
  $stmt2->execute();
  $stmt2->bind_result( $title, $author, $year, $category) ;
 
-
 echo "<br /><br />";
-echo "<br /><br />";
-echo("List of book user want to buy <br />");
-echo "<br /><br />";
+echo("<h3>List of book user want to buy</h3> ");
 while($stmt2->fetch()){
+    echo"_____________________________________________________________________________________________________________________________________________";
     echo "<br />";
     echo " Title: ".$title;
     echo "<br />";
@@ -73,7 +73,8 @@ while($stmt2->fetch()){
     echo "Year: ".$year;
     echo "<br />";
     echo "category: ".$category;
-
+    echo "<br />";
+    echo"_________________________________________________________________________________________________________________________________________________________";
    // echo "<a href=readmore.php?user=$viewinguser>READ MORE</a>";
 }
 

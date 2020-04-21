@@ -153,6 +153,7 @@
     htmlspecialchars("Category ".$category));
     $title1 = str_replace(' ', '%20', $title);
     $author1 = str_replace(' ', '%20', $author);
+ 
     echo "<a href=readmore.php?title=$title1&buser=$username1&bauthor=$author1&list=1>MORE INFO</a> ";
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
         echo "<a href=edit.php?title=$title1&buser=$username1&bauthor=$author1&list=1>EDIT INFO</a> ";
@@ -162,7 +163,7 @@
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
     echo"<br>";
-    echo"-----------------";
+    echo"----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
      echo"<br>";
 
 }
@@ -242,7 +243,7 @@ $stmt->close();
  echo "<br /><br />";
 
  while($stmt->fetch()){
-    printf("%s,<br />, %s,<br />, %s,<br />,%s, <br /><br /><br />",
+        printf("%s,<br />%s,<br /> %s,<br />%s, <br /><br /><br />",
     htmlspecialchars("Book title :".$title),
     htmlspecialchars("Author: ".$author),
     htmlspecialchars("Year ".$year),
@@ -255,7 +256,7 @@ $title1 = str_replace(' ', '%20', $title);
         echo "<a href=delete.php?title=$title1&buser=$username1&bauthor=$author1&list=2>DELETE BOOK</a> ";
     echo "&nbsp&nbsp&nbsp&nbsp&nbsp";
   echo"<br>";
-  echo"-----------------";
+  echo"-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------";
   echo"<br>";
 }
 $stmt->close();

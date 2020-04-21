@@ -14,8 +14,7 @@
 <body>
 
 <div id = "displayoptions">
-        <br> <br> <br>
-        Display Book by Category:
+        <h3>Display Book by Category:</h3>
         <br>
 <input type="radio" name="cat" value="Nonfiction Biography" id = "id1" required> Nonfiction Biography
 <input type="radio" name="cat" value="Nonfiction Informative" id = "id2" required> Nonfiction Informative
@@ -35,6 +34,7 @@
 
 <form action = "index.php" methods = "POST">
 <input type= "submit" name = "view" value = "Go Back" />
+<br>
 </form>
 <?php session_start(); ?>
 <div id = "listbook">
@@ -126,7 +126,7 @@ function getBooks() {
                                                 var primarykeystring = jsonData.books[i].username + "---" + jsonData.books[i].title + "---" + jsonData.books[i].author;
                                                 var bookdiv = document.createElement("div");
                                                 var titletext = document.createElement("div");
-                                                titletext.textContent = jsonData.books[i].title;
+                                                titletext.textContent = "Book Title: " + jsonData.books[i].title;
                                                 titletext.setAttribute("id", primarykeystring + "1");
                                                 bookdiv.appendChild(titletext);
 

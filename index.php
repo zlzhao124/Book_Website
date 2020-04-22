@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 
-<html>
+<html lang = "en">
         <head>
                 <title>E-library Website</title>
                 <meta charset="utf-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+                
                 <link rel="stylesheet" href="css/main.css" />
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -66,13 +66,13 @@
                                         <h3> Search Results</h3>
                                 <div id="resulttext"></div>
                                 <div id="result"></div>
-
+</div>
 
 <hr>
 <!-- upload books to your lists, below each form is a list of the current books in both lists -->
-<h5>You can upload Books you own here:<h5>
+<h5>You can upload Books you own here:</h5>
 
-<form action = "uploadbook.php" methods = "GET">
+<form action = "uploadbook.php" method = "GET">
 
 <label>Username(must be same as your login username!):</label>
 <input type="text" placeholder="username" name="username" id="username" />
@@ -114,12 +114,12 @@
 </form>
                 <!-- Two -->
                         <section id="two">
-                                <div class="inner">
-                                        <article>
-                                                <div class="content">
                                                         <header>
                                                                 <h2>List of Books You Own</h2>
                                                         </header>
+                                <div class="inner">
+                                        <article>
+                                                <div class="content">
                                                         <div class="image fit">
                                                                 <img src="images/pic01.jpg" alt="" />
                                                         </div>
@@ -173,8 +173,8 @@ $stmt->close();
 
 <hr>
 
-<h5>You can upload Books you want to buy here:<h5>
-<form action = "buy.php" methods = "GET">
+<h5>You can upload Books you want to buy here:</h5>
+<form action = "buy.php" method = "GET">
 <label>Username(must be same as your login username!):</label>
 <input type="text" placeholder="username" name="username" id="username1" />
 <br>
@@ -204,19 +204,19 @@ $stmt->close();
                         </select>
 
 <br>
-<input type="hidden" name="token" id = "token"  value="<?php echo $_SESSION['token'];?>" />
+<input type="hidden" name="token" id = "token1"  value="<?php echo $_SESSION['token'];?>" />
 <input type= "submit" name = "submit" value = "submit" />
 <br><br>
 <br><br>
-
+</form>
                 <!-- Three -->
                         <section id="three">
+			<header>
+                                        <h2>Books you want to buy</h2>
+                        </header>
                                 <div class="inner">
                                         <article>
                                                 <div class="content">
-                                                        <header>
-                                                                <h2>Books you want to buy</h2>
-                                                        </header>
                                                         <div class="image fit">
                                                                 <img src="images/pic01.jpg" alt="" />
                                                         </div>

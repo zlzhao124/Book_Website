@@ -3,7 +3,7 @@
 464082 (Helen Jiang)
 
 Link to project:
-http://ec2-107-23-252-146.compute-1.amazonaws.com/~zlzhao124/mod7/index.html
+http://ec2-54-245-201-215.us-west-2.compute.amazonaws.com/~jzy/mod7
 
 
 
@@ -17,7 +17,7 @@ Submitted rubric (5 points)
 I hope we’re not too late!
 
 Languages/Frameworks used (10 points)
-10 - Collection of APIs: Google Location and Dark Sky
+10 - Collection of APIs: Google Book,Google Location and Dark Sky
 0 - MySQL Database
 0- PHP
 0- HTML
@@ -29,7 +29,7 @@ User Management (15 Points):
 3) Users can edit and delete his own book but not other user’s book.(7 points)
 
 Book Management (43 points):
-4) User can search and browse books from all over the internet, and being redirect to Google Book and read the book content when click on ReadMore(10 points)
+4) User can search and browse books from all over the internet, and being redirect to Google Book and read the book content when click on ReadMore. User can also search for weather (10 points)
 
 5) users can enter the book information that they've already owned and upload a picture. (8points)
 book name (2pts)

@@ -2,8 +2,7 @@
 466205 (Zach Zhao)
 464082 (Helen Jiang)
 
-Link to project:
-http://ec2-54-245-201-215.us-west-2.compute.amazonaws.com/~jzy/mod7
+Link to project:http://ec2-107-23-252-146.compute-1.amazonaws.com/~zlzhao124/mod7/weather.html
 
 
 

@@ -17,7 +17,7 @@ Submitted rubric (5 points)
 I hope we’re not too late!
 
 Languages/Frameworks used (10 points)
-10 - Collection of APIs
+10 - Collection of APIs: Google Location and Dark Sky
 0 - MySQL Database
 0- PHP
 0- HTML

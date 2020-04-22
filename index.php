@@ -31,7 +31,7 @@
                 <!-- Banner -->
                         <section id="banner">
                                 <div class="inner">
-                                        <h1>Welcome to E-Library: <span>Here you can browse books, list your books and find other readers!<br />
+                                        <h1>Welcome to E-Library: <span>Here you can browse books, list your books and find other readers!You could even look up the weather!<br />
                                 </span></h1>
                                 </div>
                         </section>
